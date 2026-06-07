@@ -1,12 +1,29 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Representa o Rei no xadrez.
+ * Move-se uma casa em qualquer direção (horizontal, vertical ou diagonal).
+ */
 public class Rei extends Peca{
 
+    /**
+     * Cria um Rei com a posição e cor fornecidas.
+     *
+     * @param posicao posição inicial no tabuleiro
+     * @param cor     cor da peça ("branco" ou "preto")
+     */
     public Rei(Posicao posicao, String cor){
         super(posicao,cor);
     }
 
+    /**
+     * Retorna os movimentos válidos do Rei: uma casa em qualquer das oito direções,
+     * desde que a casa esteja vazia ou ocupada por peça adversária.
+     *
+     * @param tabuleiro estado atual do tabuleiro
+     * @return lista de posições válidas de destino
+     */
     @Override
     public List<Posicao> movimentosValidos(Tabuleiro tabuleiro) {
         List<Posicao> movimentos = new ArrayList<>();

@@ -1,18 +1,37 @@
+/**
+ * Representa o tabuleiro de xadrez 8x8 e gerencia as peças posicionadas nele.
+ */
 public class Tabuleiro {
-    
+
     private Peca[][] casas = new Peca[8][8];
 
+    /**
+     * Cria o tabuleiro e posiciona todas as peças na configuração inicial.
+     */
     public Tabuleiro() {
         inicializar();
     }
 
+    /**
+     * Retorna a peça que ocupa a posição informada, ou {@code null} se a casa estiver vazia.
+     *
+     * @param posicao posição a consultar
+     * @return peça na posição, ou {@code null}
+     */
     public Peca getPeca(Posicao posicao) {
         int pecaLinha = posicao.getLinha();
         int pecaColuna = posicao.getColuna();
         return casas[pecaLinha][pecaColuna];
     }
 
-public void mover(Posicao origem, Posicao destino) {
+    /**
+     * Move a peça da posição de origem para a posição de destino.
+     * Não realiza a movimentação se o destino estiver fora do tabuleiro.
+     *
+     * @param origem  posição atual da peça
+     * @param destino posição de destino
+     */
+    public void mover(Posicao origem, Posicao destino) {
     if (destino.isValida()) {
         Peca pecaMovendo = getPeca(origem);
         casas[destino.getLinha()][destino.getColuna()] = pecaMovendo;
@@ -23,6 +42,9 @@ public void mover(Posicao origem, Posicao destino) {
     }
 }
 
+    /**
+     * Posiciona todas as peças de ambos os lados na configuração padrão de início de partida.
+     */
     public void inicializar() {
         for (int i = 0; i < 2; i++){
             String cor = "branco";
